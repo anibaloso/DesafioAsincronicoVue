@@ -5,7 +5,7 @@ import CardPaciente from './CardPaciente.vue';
 
 export default {
     name: 'CitaMedica',
-    components:{
+    components: {
         CardPaciente
     },
     data() {
@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         agregarPacientes() {
-            const nuevoPaciente = { ...this.pacientes};
+            const nuevoPaciente = { ...this.pacientes };
             this.listaPacientes.push(nuevoPaciente)
             this.pacientes = {
                 paciente: '',
@@ -69,29 +69,23 @@ export default {
         </div>
 
         <div>
-            <button @click.prevent="agregarPacientes" 
-            :disabled="!pacientes.paciente || 
-            !pacientes.fecha || 
-            !pacientes.hora || 
-            !pacientes.valueGravedad || 
-            !pacientes.motivo "
-            >Agregar</button>
+            <button @click.prevent="agregarPacientes" :disabled="!pacientes.paciente ||
+                !pacientes.fecha ||
+                !pacientes.hora ||
+                !pacientes.valueGravedad ||
+                !pacientes.motivo">Agregar</button>
         </div>
     </div>
-    <div v-show="listaPacientes.length === 0 " :style="{textAlign:'center', color:'red'}" >
-        Aún no hay consultas registradas 
+    <div v-show="listaPacientes.length === 0" :style="{ textAlign: 'center', color: 'red' }">
+        Aún no hay consultas registradas
     </div>
     <div class="cards">
-        <CardPaciente
-            v-for="(paciente,idx) in listaPacientes" 
-            :key=idx 
-            :paciente="paciente"
-            @eliminar="eliminarPaciente"
-            />
-            
-        </div>
-        
-        
+        <CardPaciente v-for="(paciente, idx) in listaPacientes" :key=idx :paciente="paciente"
+            @eliminar="eliminarPaciente" />
+
+    </div>
+
+
 
 
 </template>
@@ -122,5 +116,6 @@ export default {
 .cards {
     display: flex;
     flex-direction: row;
+    margin-top: 2rem;
 }
 </style>
